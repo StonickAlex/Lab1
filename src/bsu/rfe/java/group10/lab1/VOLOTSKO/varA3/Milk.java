@@ -1,15 +1,15 @@
 package bsu.rfe.java.group10.lab1.VOLOTSKO.varA3;
 
-public class IceCream extends Food {
+public class Milk extends Food {
     private String fill;
 
-    public IceCream(String flavour) {
-        super("Жевательная резинка");
-        this.fill = flavour;
+    public Milk(String fat) {
+        super("Молоко");
+        this.fill = fat;
     }
 
     public void consume() {
-        System.out.println(this + "съедено");
+        System.out.println(this + "выпито");
     }
 
     public String getFill() {
@@ -21,13 +21,13 @@ public class IceCream extends Food {
 
     public boolean equals(Object arg0) {
         if (super.equals(arg0)) {
-            if (!(arg0 instanceof IceCream)) return false;
-            return fill.equals(((IceCream) arg0).fill);
+            if (!(arg0 instanceof Milk)) return false;
+            return fill.equals(((Milk) arg0).fill);
         } else
             return false;
     }
 
     public String toString() {
-        return super.toString() + " привкус '" + fill.toUpperCase() + "'";
+        return super.toString() + " жирность '" + fill.toUpperCase() + "'";
     }
 }

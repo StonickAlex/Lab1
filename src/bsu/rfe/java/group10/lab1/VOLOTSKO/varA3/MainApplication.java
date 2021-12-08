@@ -2,14 +2,14 @@ package bsu.rfe.java.group10.lab1.VOLOTSKO.varA3;
 
 import java.util.Scanner;
 
-public class MainAplication {
+public class MainApplication {
 	@SuppressWarnings("unchecked")
 	public static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		Food[] breakfast = new Food[20];
 		for (int i = 0; i < 20; i++) {
-			System.out.println("Введите блюдо");
+			System.out.println("Введите блюдо, если хотите перестать вводить данные, введите *end* ");
 			String food = scanner.nextLine();
 			if (food.equals("сыр")) {
 				breakfast[i] = new Cheese();
@@ -17,12 +17,12 @@ public class MainAplication {
 				breakfast[i] = new Apple("большое");
 			} else if (food.equals("яблоко/маленькое")) {
 				breakfast[i] = new Apple("маленькое");
-			} else if (food.equals("жевательная резинка/Мята")) {
-				breakfast[i] = new IceCream("Мята");
-			} else if (food.equals("жевательная резинка/Вишня")) {
-				breakfast[i] = new IceCream("Вишня");
-			} else if (food.equals("жевательная резинка/Арбуз")) {
-				breakfast[i] = new IceCream("Арбуз");
+			} else if (food.equals("молоко/1.5%")) {
+				breakfast[i] = new Milk("1.5%");
+			} else if (food.equals("молоко/2.5%")) {
+				breakfast[i] = new Milk("2.5%");
+			} else if (food.equals("молоко/5%")) {
+				breakfast[i] = new Milk("5%");
 			}  else break;
 		}
 		for (int j=0; j<breakfast.length; j++) {
@@ -33,18 +33,24 @@ public class MainAplication {
 
 		int apple_counter=0;
 		int cheese_counter=0;
-		int pie_counter=0;
+		int milk_counter=0;
 		for (int i = 0; i < 20; i++) {
-			if(breakfast[i]  instanceof Apple) {
-				apple_counter++;
-			} else if(breakfast[i]  instanceof Cheese ) {
-				cheese_counter++;
-			} else if(breakfast[i]  instanceof IceCream) {
-				pie_counter++;
+			if (breakfast[i] != null) {
+				if(breakfast[i].equals(new Apple("большое"))) {
+					apple_counter++;
+				} else if(breakfast[i].equals(new Cheese())) {
+					cheese_counter++;
+				} else if(breakfast[i].equals(new Milk("1.5%"))) {
+					milk_counter++;
+				}
 			}
+			else break;
 		}
+
+
 		System.out.println("CЫР - " +cheese_counter );
 		System.out.println("ЯБЛОКО - " +apple_counter );
-		System.out.println("ЖЕВАТЕЛЬНАЯ РЕЗИНКА - " + pie_counter);
+		System.out.println("МОЛОКО - " + milk_counter);
 	}
 }
+
